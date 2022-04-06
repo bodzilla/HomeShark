@@ -2,9 +2,9 @@
 {
     public enum StatusType
     {
-        ForSale = 0,
-        ForRent = 1,
-        UnderOffer = 2,
-        SoldStc = 3
+        OnMarket = 0,
+        UnderOffer = 1,
+        SoldStc = 2,
+        Removed = 3
     }
 }
