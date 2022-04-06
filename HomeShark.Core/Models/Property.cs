@@ -78,6 +78,8 @@ namespace HomeShark.Core.Models
 
         public EpcRatingType EpcRatingType { get; set; }
 
+        public CouncilTaxBandType CouncilTaxBandType { get; set; }
+
         public ConstructionType ConstructionType { get; set; }
 
         public IEnumerable<KeyFeature> KeyFeatures { get; set; }
