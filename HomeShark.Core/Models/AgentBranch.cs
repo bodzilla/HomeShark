@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using HomeShark.Core.Contracts;
 
 namespace HomeShark.Core.Models

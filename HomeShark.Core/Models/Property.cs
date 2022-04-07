@@ -66,9 +66,11 @@ namespace HomeShark.Core.Models
 
         public bool? HasDrivewayOrGarage { get; set; }
 
+        public StatusType StatusType { get; set; }
+
         public AdvertType AdvertType { get; set; }
 
-        public StatusType StatusType { get; set; }
+        public TagType TagType { get; set; }
 
         public PropertyType PropertyType { get; set; }
 
