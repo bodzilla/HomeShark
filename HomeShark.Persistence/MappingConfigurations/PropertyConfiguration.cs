@@ -26,6 +26,12 @@ namespace HomeShark.Persistence.MappingConfigurations
             builder.HasIndex(x => x.Location);
             builder.HasIndex(x => x.Postcode);
 
+            builder.Ignore(x => x.Images);
+            builder.Ignore(x => x.VirtualTours);
+            builder.Ignore(x => x.Floorplans);
+            builder.Ignore(x => x.Epcs);
+            builder.Ignore(x => x.Documents);
+
             builder.HasMany(x => x.KeyFeatures)
                 .WithOne(x => x.Property)
                 .HasForeignKey(x => x.PropertyId);
