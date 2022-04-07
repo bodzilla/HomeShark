@@ -14,13 +14,13 @@ namespace HomeShark.Persistence
 
         public DbSet<KeyFeature> KeyFeatures { get; set; }
 
-        public DbSet<School> Schools { get; set; }
-
         public DbSet<Station> Stations { get; set; }
 
-        public DbSet<PropertySchool> PropertySchools { get; set; }
+        public DbSet<School> Schools { get; set; }
 
         public DbSet<PropertyStation> PropertyStations { get; set; }
+
+        public DbSet<PropertySchool> PropertySchools { get; set; }
 
         public DbSet<Media> Media { get; set; }
 
