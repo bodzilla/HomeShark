@@ -2,12 +2,14 @@
 {
     public enum PropertyType
     {
-        DetachedHouse = 0,
-        SemiDetatchedHouse = 1,
-        TerracedHouse = 2,
-        Flat = 3,
-        Bungalow = 4,
-        Mobile = 5,
-        Land = 6
+        HouseDetached = 0,
+        HouseSemiDetached = 1,
+        HouseTerraced = 2,
+        HouseEndOfTerrace = 3,
+        Flat = 4,
+        Cottage = 5,
+        Bungalow = 6,
+        Mobile = 7,
+        Land = 8
     }
 }

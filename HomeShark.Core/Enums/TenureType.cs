@@ -4,7 +4,7 @@
     {
         Freehold = 0,
         Leasehold = 1,
-        FreeholdShared = 2,
-        LeaseholdShared = 3
+        ShareOfFreehold = 2,
+        ShareOfLeasehold = 3
     }
 }

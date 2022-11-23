@@ -12,17 +12,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeShark.Persistence.Migrations
 {
     [DbContext(typeof(HomeSharkContext))]
-    [Migration("20220407194526_InitialCreate")]
+    [Migration("20221123165921_InitialCreate")]
     partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("HomeShark.Core.Models.Agent", b =>
                 {
@@ -30,7 +31,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
@@ -70,7 +71,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AgentId")
                         .HasColumnType("int");
@@ -113,7 +114,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
@@ -151,7 +152,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
@@ -192,7 +193,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AdvertType")
                         .HasColumnType("int");
@@ -378,7 +379,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
@@ -393,11 +394,11 @@ namespace HomeShark.Persistence.Migrations
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
+                    b.Property<long>("Latitude")
+                        .HasColumnType("bigint");
 
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
+                    b.Property<long>("Longitude")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -419,7 +420,7 @@ namespace HomeShark.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
@@ -434,11 +435,11 @@ namespace HomeShark.Persistence.Migrations
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
+                    b.Property<long>("Latitude")
+                        .HasColumnType("bigint");
 
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
+                    b.Property<long>("Longitude")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
