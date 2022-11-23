@@ -9,7 +9,7 @@ namespace HomeShark.Persistence.UnitOfWorks
 
         public GenericUow(HomeSharkContext context) => _context = context;
 
-        public void Dispose() => _context.Dispose();
+        public void Dispose() => _context?.Dispose();
 
         public async Task SaveAsync() => await _context.SaveChangesAsync();
     }
