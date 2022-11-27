@@ -2,10 +2,10 @@
 {
     public enum PropertyType
     {
-        HouseDetached = 0,
-        HouseSemiDetached = 1,
-        HouseTerraced = 2,
-        HouseEndOfTerrace = 3,
+        DetachedHouse = 0,
+        SemiDetachedHouse = 1,
+        TerracedHouse = 2,
+        EndOfTerraceHouse = 3,
         Flat = 4,
         Cottage = 5,
         Bungalow = 6,

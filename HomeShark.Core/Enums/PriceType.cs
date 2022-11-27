@@ -4,6 +4,6 @@
     {
         Fixed = 0,
         Guide = 1,
-        Over = 2
+        InExcessOf = 2
     }
 }

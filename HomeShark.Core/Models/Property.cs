@@ -28,7 +28,7 @@ namespace HomeShark.Core.Models
 
         public int AgentBranchId { get; set; }
 
-        public string Title => $"{Bedrooms} bedroom {PropertyType} for {AdvertType} in {Location}";
+        public string Title => $"{Bedrooms} bedroom, {Bathrooms} bathroom, {Receptions} reception {PropertyType} for {AdvertType} in {Location}, {Area}";
 
         public string Description { get; set; }
 
