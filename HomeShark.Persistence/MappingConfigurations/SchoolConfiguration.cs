@@ -8,7 +8,6 @@ namespace HomeShark.Persistence.MappingConfigurations
     {
         public void Configure(EntityTypeBuilder<School> builder)
         {
-            builder.Property(x => x.EntityCreated).HasDefaultValueSql("getdate()");
             builder.Property(x => x.EntityModified).HasDefaultValue(null);
             builder.Property(x => x.EntityActive).HasDefaultValue(true);
 
@@ -17,7 +16,7 @@ namespace HomeShark.Persistence.MappingConfigurations
             builder.Property(x => x.Latitude).IsRequired();
             builder.Property(x => x.Longitude).IsRequired();
 
-            builder.HasIndex(x => x.Name);
+            builder.HasIndex(x => new { x.Name, x.SchoolType });
         }
     }
 }

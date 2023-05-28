@@ -2,8 +2,8 @@
 {
     public enum PriceType
     {
-        Fixed = 0,
-        Guide = 1,
-        InExcessOf = 2
+        Guide = 0,
+        Fixed = 1,
+        Over = 2
     }
 }

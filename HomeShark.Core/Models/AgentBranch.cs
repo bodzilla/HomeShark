@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using HomeShark.Core.Contracts;
+﻿using System.Collections.Generic;
+using HomeShark.Core.Base;
 
 namespace HomeShark.Core.Models
 {
-    public sealed class AgentBranch : IEntity
+    public sealed class AgentBranch : EntityBase
     {
         public AgentBranch() => Properties = new List<Property>();
-
-        public int Id { get; set; }
-
-        public DateTime EntityCreated { get; set; }
-
-        public DateTime? EntityModified { get; set; }
-
-        public bool EntityActive { get; set; }
 
         public string Name { get; set; }
 
         public string Location { get; set; }
+
+        public string Email { get; set; }
 
         public string Phone { get; set; }
 

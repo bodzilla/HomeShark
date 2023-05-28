@@ -17,12 +17,12 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -35,13 +35,13 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SchoolType = table.Column<int>(type: "int", nullable: false),
                     Latitude = table.Column<long>(type: "bigint", nullable: false),
-                    Longitude = table.Column<long>(type: "bigint", nullable: false)
+                    Longitude = table.Column<long>(type: "bigint", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -54,13 +54,13 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     StationType = table.Column<int>(type: "int", nullable: false),
                     Latitude = table.Column<long>(type: "bigint", nullable: false),
-                    Longitude = table.Column<long>(type: "bigint", nullable: false)
+                    Longitude = table.Column<long>(type: "bigint", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -73,13 +73,14 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AgentId = table.Column<int>(type: "int", nullable: false)
+                    AgentId = table.Column<int>(type: "int", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -98,9 +99,6 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     AgentBranchId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false),
@@ -113,11 +111,11 @@ namespace HomeShark.Persistence.Migrations
                     Longitude = table.Column<double>(type: "float", nullable: false),
                     Postcode = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TotalSizeSqFt = table.Column<int>(type: "int", nullable: true),
+                    IsPromoted = table.Column<bool>(type: "bit", nullable: false),
                     IsAuction = table.Column<bool>(type: "bit", nullable: false),
                     IsChainFree = table.Column<bool>(type: "bit", nullable: false),
                     IsNewBuild = table.Column<bool>(type: "bit", nullable: false),
-                    IsExtended = table.Column<bool>(type: "bit", nullable: false),
-                    IsPromoted = table.Column<bool>(type: "bit", nullable: false),
+                    IsExtended = table.Column<bool>(type: "bit", nullable: true),
                     HasDrivewayOrGarage = table.Column<bool>(type: "bit", nullable: true),
                     StatusType = table.Column<int>(type: "int", nullable: false),
                     AdvertType = table.Column<int>(type: "int", nullable: false),
@@ -127,7 +125,10 @@ namespace HomeShark.Persistence.Migrations
                     PriceType = table.Column<int>(type: "int", nullable: false),
                     EpcRatingType = table.Column<int>(type: "int", nullable: true),
                     CouncilTaxBandType = table.Column<int>(type: "int", nullable: true),
-                    ConstructionType = table.Column<int>(type: "int", nullable: true)
+                    ConstructionType = table.Column<int>(type: "int", nullable: true),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -146,12 +147,12 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     PropertyId = table.Column<int>(type: "int", nullable: false),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OrderRank = table.Column<int>(type: "int", nullable: false)
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -170,13 +171,13 @@ namespace HomeShark.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
-                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     PropertyId = table.Column<int>(type: "int", nullable: false),
                     Uri = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MediaType = table.Column<int>(type: "int", nullable: false),
-                    OrderRank = table.Column<int>(type: "int", nullable: false)
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -195,11 +196,11 @@ namespace HomeShark.Persistence.Migrations
                 {
                     PropertyId = table.Column<int>(type: "int", nullable: false),
                     SchoolId = table.Column<int>(type: "int", nullable: false),
+                    DistanceMiles = table.Column<double>(type: "float", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    DistanceMiles = table.Column<double>(type: "float", nullable: false)
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -224,11 +225,11 @@ namespace HomeShark.Persistence.Migrations
                 {
                     PropertyId = table.Column<int>(type: "int", nullable: false),
                     StationId = table.Column<int>(type: "int", nullable: false),
+                    DistanceMiles = table.Column<double>(type: "float", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false),
-                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
+                    EntityCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EntityModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    DistanceMiles = table.Column<double>(type: "float", nullable: false)
+                    EntityActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -299,14 +300,14 @@ namespace HomeShark.Persistence.Migrations
                 column: "StationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schools_Name",
+                name: "IX_Schools_Name_SchoolType",
                 table: "Schools",
-                column: "Name");
+                columns: new[] { "Name", "SchoolType" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Stations_Name",
+                name: "IX_Stations_Name_StationType",
                 table: "Stations",
-                column: "Name");
+                columns: new[] { "Name", "StationType" });
         }
 
         /// <inheritdoc />

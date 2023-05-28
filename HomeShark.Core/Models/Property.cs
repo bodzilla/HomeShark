@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using HomeShark.Core.Contracts;
+using HomeShark.Core.Base;
 using HomeShark.Core.Enums;
 
 namespace HomeShark.Core.Models
 {
-    public sealed class Property : IEntity
+    public sealed class Property : EntityBase
     {
         public Property()
         {
@@ -15,14 +14,6 @@ namespace HomeShark.Core.Models
             PropertySchools = new List<PropertySchool>();
             Media = new List<Media>();
         }
-
-        public int Id { get; set; }
-
-        public DateTime EntityCreated { get; set; }
-
-        public DateTime? EntityModified { get; set; }
-
-        public bool EntityActive { get; set; }
 
         public AgentBranch AgentBranch { get; set; }
 
@@ -54,15 +45,15 @@ namespace HomeShark.Core.Models
 
         public int? TotalSizeSqFt { get; set; }
 
+        public bool IsPromoted { get; set; }
+
         public bool IsAuction { get; set; }
 
         public bool IsChainFree { get; set; }
 
         public bool IsNewBuild { get; set; }
 
-        public bool IsExtended { get; set; }
-
-        public bool IsPromoted { get; set; }
+        public bool? IsExtended { get; set; }
 
         public bool? HasDrivewayOrGarage { get; set; }
 

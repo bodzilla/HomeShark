@@ -36,9 +36,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -73,15 +71,16 @@ namespace HomeShark.Persistence.Migrations
                     b.Property<int>("AgentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -113,21 +112,19 @@ namespace HomeShark.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("OrderRank")
-                        .HasColumnType("int");
 
                     b.Property<int>("PropertyId")
                         .HasColumnType("int");
@@ -151,23 +148,21 @@ namespace HomeShark.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
                     b.Property<bool>("EntityActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("MediaType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderRank")
                         .HasColumnType("int");
 
                     b.Property<int>("PropertyId")
@@ -223,9 +218,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -242,7 +235,7 @@ namespace HomeShark.Persistence.Migrations
                     b.Property<bool>("IsChainFree")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsExtended")
+                    b.Property<bool?>("IsExtended")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsNewBuild")
@@ -319,9 +312,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -353,9 +344,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -384,9 +373,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -406,7 +393,7 @@ namespace HomeShark.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
+                    b.HasIndex("Name", "SchoolType");
 
                     b.ToTable("Schools");
                 });
@@ -425,9 +412,7 @@ namespace HomeShark.Persistence.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("EntityCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EntityModified")
                         .HasColumnType("datetime2");
@@ -447,7 +432,7 @@ namespace HomeShark.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
+                    b.HasIndex("Name", "StationType");
 
                     b.ToTable("Stations");
                 });

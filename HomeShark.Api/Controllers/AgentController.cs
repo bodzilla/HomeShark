@@ -1,20 +1,21 @@
 using HomeShark.Core.Models;
 using HomeShark.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeShark.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ApiController : ControllerBase
+    public class AgentController : ControllerBase
     {
-        private readonly ILogger<ApiController> _logger;
-        private readonly HomeSharkContext _context;
+        private readonly ILogger<AgentController> _logger;
+        private readonly DbSet<Agent> _repository;
 
-        public ApiController(ILogger<ApiController> logger, HomeSharkContext context)
+        public AgentController(ILogger<AgentController> logger, HomeSharkContext context)
         {
             _logger = logger;
-            _context = context;
+            _repository = context.Agents;
         }
 
         [HttpGet]

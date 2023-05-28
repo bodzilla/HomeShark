@@ -6,6 +6,7 @@
         Published = 1,
         UnderOffer = 2,
         SoldStc = 3,
-        Removed = 4
+        Removed = 4,
+        InAdminReview = 5
     }
 }

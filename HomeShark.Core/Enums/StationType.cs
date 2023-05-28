@@ -5,7 +5,8 @@
         LondonUnderground = 0,
         LondonOverground = 1,
         NationalRail = 2,
-        TflRail = 3,
-        Dlr = 4
+        Crossrail = 3,
+        Dlr = 4,
+        Tram = 5
     }
 }

@@ -8,7 +8,6 @@ namespace HomeShark.Persistence.MappingConfigurations
     {
         public void Configure(EntityTypeBuilder<KeyFeature> builder)
         {
-            builder.Property(x => x.EntityCreated).HasDefaultValueSql("getdate()");
             builder.Property(x => x.EntityModified).HasDefaultValue(null);
             builder.Property(x => x.EntityActive).HasDefaultValue(true);
 

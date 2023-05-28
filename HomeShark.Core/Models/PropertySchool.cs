@@ -1,18 +1,9 @@
-﻿using System;
-using HomeShark.Core.Contracts;
+﻿using HomeShark.Core.Base;
 
 namespace HomeShark.Core.Models
 {
-    public class PropertySchool : IEntity
+    public sealed class PropertySchool : EntityBase
     {
-        public int Id { get; set; }
-
-        public DateTime EntityCreated { get; set; }
-
-        public DateTime? EntityModified { get; set; }
-
-        public bool EntityActive { get; set; }
-
         public Property Property { get; set; }
 
         public int PropertyId { get; set; }
