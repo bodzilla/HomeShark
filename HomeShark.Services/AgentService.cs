@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using HomeShark.Core.Contracts.Services;
 using HomeShark.Core.Dtos.Requests;
 using HomeShark.Core.Models;
 using HomeShark.Persistence;
-using HomeShark.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -35,7 +35,7 @@ namespace HomeShark.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error getting all {nameof(AgentService)}");
+                _logger.LogError(ex, $"Error getting all {nameof(Agent)}");
                 throw;
             }
         }
@@ -50,7 +50,7 @@ namespace HomeShark.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error getting {nameof(Agent)} by ID");
+                _logger.LogError(ex, $"Error getting {nameof(Agent)} by ID {id}");
                 throw;
             }
         }
@@ -67,34 +67,37 @@ namespace HomeShark.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error getting {nameof(Agent)} by {nameof(Agent.Name)}");
+                _logger.LogError(ex, $"Error getting {nameof(Agent)} by {nameof(name)} {nameof(Agent.Name)}");
                 throw;
             }
         }
 
-        public async Task<Agent> AddAsync(AgentRequest agentRequest)
+        public async Task<Agent> AddAsync(AddAgentRequest request)
         {
             try
             {
-                if (agentRequest == null) throw new ArgumentNullException(nameof(agentRequest), $"{nameof(agentRequest)} cannot be null");
+                if (request == null) throw new ArgumentNullException(nameof(request), $"{nameof(AddAgentRequest)} cannot be null");
 
-                var agent = _mapper.Map<Agent>(agentRequest);
+                var agent = _mapper.Map<Agent>(request);
                 await _context.Agents.AddAsync(agent);
                 await _context.SaveChangesAsync();
                 return agent;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error adding {nameof(agentRequest)}");
+                _logger.LogError(ex, $"Error adding {nameof(AddAgentRequest)}");
                 throw;
             }
         }
 
-        public async Task<Agent> UpdateAsync(Agent agent)
+        public async Task<Agent> UpdateAsync(UpdateAgentRequest request)
         {
             try
             {
-                if (agent == null) throw new ArgumentNullException(nameof(agent), $"{nameof(agent)} cannot be null");
+                if (request == null) throw new ArgumentNullException(nameof(request), $"{nameof(UpdateAgentRequest)} cannot be null");
+
+                var agent = _mapper.Map<Agent>(request);
+                if (!await _context.Agents.AnyAsync(x => x.Id == agent.Id)) throw new ArgumentException($"{nameof(Agent)} with ID {agent.Id} does not exist");
 
                 agent.EntityModified = DateTime.Now;
                 _context.Agents.Update(agent);
@@ -103,23 +106,28 @@ namespace HomeShark.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error updating {nameof(agent)}");
+                _logger.LogError(ex, $"Error updating {nameof(UpdateAgentRequest)}");
                 throw;
             }
         }
 
-        public async Task<Agent> SetInactiveAsync(Agent agent)
+        public async Task<Agent> SetInactiveAsync(int id)
         {
             try
             {
-                if (agent == null) throw new ArgumentNullException(nameof(agent), $"{nameof(agent)} cannot be null");
+                if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id), id, $"{nameof(id)} must be greater than 0");
+
+                var agent = await _context.Agents.FindAsync(id) ?? throw new NullReferenceException($"{nameof(Agent)} with ID {id} does not exist");
 
                 agent.EntityActive = false;
-                return await UpdateAsync(agent);
+                agent.EntityModified = DateTime.Now;
+                _context.Agents.Update(agent);
+                await _context.SaveChangesAsync();
+                return agent;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error setting inactive {nameof(agent)}");
+                _logger.LogError(ex, $"Error setting inactive {nameof(Agent)}");
                 throw;
             }
         }

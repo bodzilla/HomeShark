@@ -1,12 +1,12 @@
+using HomeShark.Core.Contracts.Services;
 using HomeShark.Core.Dtos.Requests;
 using HomeShark.Core.Models;
-using HomeShark.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeShark.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AgentController : ControllerBase
     {
         private readonly ILogger<AgentController> _logger;
@@ -32,12 +32,14 @@ namespace HomeShark.Api.Controllers
             }
         }
 
-        [HttpGet("search/{id}")]
+        [HttpGet("search/id/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             try
             {
-                return Ok(await _service.GetByIdAsync(id));
+                var agent = await _service.GetByIdAsync(id);
+                if (agent == null) return NotFound();
+                return Ok(agent);
             }
             catch (Exception ex)
             {
@@ -46,11 +48,13 @@ namespace HomeShark.Api.Controllers
             }
         }
 
-        [HttpGet("search/{name}")]
+        [HttpGet("search/name/{name}")]
         public async Task<IActionResult> GetAllByContainsNameAsync(string name)
         {
             try
             {
+                var agents = await _service.GetAllByContainsNameAsync(name);
+                if (!agents.Any()) return NotFound();
                 return Ok(await _service.GetAllByContainsNameAsync(name));
             }
             catch (Exception ex)
@@ -61,15 +65,43 @@ namespace HomeShark.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync(AgentRequest agentRequest)
+        public async Task<IActionResult> AddAsync(AddAgentRequest request)
         {
             try
             {
-                return Ok(await _service.AddAsync(agentRequest));
+                return Ok(await _service.AddAsync(request));
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error adding {nameof(Agent)}");
+                return BadRequest();
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(UpdateAgentRequest request)
+        {
+            try
+            {
+                return Ok(await _service.UpdateAsync(request));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating {nameof(Agent)}");
+                return BadRequest();
+            }
+        }
+
+        [HttpPatch("deactivate")]
+        public async Task<IActionResult> SetInactiveAsync(int id)
+        {
+            try
+            {
+                return Ok(await _service.SetInactiveAsync(id));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error setting inactive {nameof(Agent)}");
                 return BadRequest();
             }
         }

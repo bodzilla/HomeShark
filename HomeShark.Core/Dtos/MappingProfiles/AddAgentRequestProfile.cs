@@ -4,8 +4,8 @@ using HomeShark.Core.Models;
 
 namespace HomeShark.Core.Dtos.MappingProfiles
 {
-    public sealed class AgentRequestProfile : Profile
+    public sealed class AddAgentRequestProfile : Profile
     {
-        public AgentRequestProfile() => CreateMap<AgentRequest, Agent>();
+        public AddAgentRequestProfile() => CreateMap<AddAgentRequest, Agent>();
     }
 }

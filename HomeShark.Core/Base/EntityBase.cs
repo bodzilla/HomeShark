@@ -4,7 +4,11 @@ namespace HomeShark.Core.Base
 {
     public class EntityBase
     {
-        public EntityBase() => EntityCreated = DateTime.Now;
+        public EntityBase()
+        {
+            EntityCreated = DateTime.Now;
+            EntityActive = true;
+        }
 
         public int Id { get; set; }
 
