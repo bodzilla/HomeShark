@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeShark.Persistence
 {
-    public sealed class HomeSharkContext : DbContext
+    public class HomeSharkContext : DbContext
     {
         public DbSet<Agent> Agents { get; set; }
 

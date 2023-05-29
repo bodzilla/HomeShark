@@ -5,9 +5,11 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeShark.Core", "HomeShark.Core\HomeShark.Core.csproj", "{AD15AFB7-C14F-4EA4-9DC3-34B2F1ADB185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeShark.Persistence", "HomeShark.Persistence\HomeShark.Persistence.csproj", "{76CA4B30-D9BB-48EB-81B3-57E8366B04F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeShark.Persistence", "HomeShark.Persistence\HomeShark.Persistence.csproj", "{76CA4B30-D9BB-48EB-81B3-57E8366B04F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeShark.Api", "HomeShark.Api\HomeShark.Api.csproj", "{B46E3013-2EB1-4671-86F7-C37899FA9EE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeShark.Api", "HomeShark.Api\HomeShark.Api.csproj", "{B46E3013-2EB1-4671-86F7-C37899FA9EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeShark.Services", "HomeShark.Services\HomeShark.Services.csproj", "{E08A3D46-1BA7-43CF-8EB3-9687D164B2F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B46E3013-2EB1-4671-86F7-C37899FA9EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B46E3013-2EB1-4671-86F7-C37899FA9EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B46E3013-2EB1-4671-86F7-C37899FA9EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E08A3D46-1BA7-43CF-8EB3-9687D164B2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08A3D46-1BA7-43CF-8EB3-9687D164B2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08A3D46-1BA7-43CF-8EB3-9687D164B2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08A3D46-1BA7-43CF-8EB3-9687D164B2F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
