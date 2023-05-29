@@ -59,7 +59,7 @@ namespace HomeShark.Services
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name), $"{nameof(name)} cannot be null or empty");
+                if (String.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name), $"{nameof(name)} cannot be null or empty");
 
                 return await _context.Agents
                     .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{name.ToLower()}%"))
