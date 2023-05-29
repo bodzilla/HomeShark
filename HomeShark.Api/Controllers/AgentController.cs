@@ -1,4 +1,3 @@
-using AutoMapper;
 using HomeShark.Core.Dtos.Requests;
 using HomeShark.Core.Models;
 using HomeShark.Services.Models;
