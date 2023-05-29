@@ -3,15 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HomeShark.Core.Dtos.Requests;
+using HomeShark.Services.Contracts;
 
 namespace HomeShark.Services.Models
 {
-    public interface IAgentService : IDisposable
+    public interface IAgentService : IService<Agent>, IDisposable
     {
-        Task<List<Agent>> GetAllAsync();
-
-        Task<Agent> GetByIdAsync(int id);
-
         Task<List<Agent>> GetAllByContainsNameAsync(string name);
 
         Task<Agent> AddAsync(AgentRequest agentRequest);

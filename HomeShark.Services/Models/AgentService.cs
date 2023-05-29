@@ -28,49 +28,39 @@ namespace HomeShark.Services.Models
 
         public async Task<List<Agent>> GetAllAsync()
         {
-            List<Agent> agents;
-
             try
             {
-                agents = await _context.Agents.ToListAsync();
+                return await _context.Agents.ToListAsync();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error getting all {nameof(AgentService)}");
                 throw;
             }
-
-            return agents;
         }
 
         public async Task<Agent> GetByIdAsync(int id)
         {
-            Agent agent;
-
             try
             {
                 if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id), id, $"{nameof(id)} must be greater than 0");
 
-                agent = await _context.Agents.FindAsync(id);
+                return await _context.Agents.FindAsync(id);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error getting {nameof(agent)} by ID");
+                _logger.LogError(ex, $"Error getting {nameof(Agent)} by ID");
                 throw;
             }
-
-            return agent;
         }
 
         public async Task<List<Agent>> GetAllByContainsNameAsync(string name)
         {
-            List<Agent> agents;
-
             try
             {
                 if (String.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name), $"{nameof(name)} cannot be null or empty");
 
-                agents = await _context.Agents
+                return await _context.Agents
                     .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{name.ToLower()}%"))
                     .ToListAsync();
             }
@@ -79,29 +69,24 @@ namespace HomeShark.Services.Models
                 _logger.LogError(ex, $"Error getting {nameof(Agent)} by {nameof(Agent.Name)}");
                 throw;
             }
-
-            return agents;
         }
 
         public async Task<Agent> AddAsync(AgentRequest agentRequest)
         {
-            Agent agent;
-
             try
             {
                 if (agentRequest == null) throw new ArgumentNullException(nameof(agentRequest), $"{nameof(agentRequest)} cannot be null");
 
-                agent = _mapper.Map<Agent>(agentRequest);
+                var agent = _mapper.Map<Agent>(agentRequest);
                 await _context.Agents.AddAsync(agent);
                 await _context.SaveChangesAsync();
+                return agent;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error adding {nameof(agentRequest)}");
                 throw;
             }
-
-            return agent;
         }
 
         public async Task<Agent> UpdateAsync(Agent agent)
@@ -113,14 +98,13 @@ namespace HomeShark.Services.Models
                 agent.EntityModified = DateTime.Now;
                 _context.Agents.Update(agent);
                 await _context.SaveChangesAsync();
+                return agent;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error updating {nameof(agent)}");
                 throw;
             }
-
-            return agent;
         }
 
         public async Task<Agent> SetInactiveAsync(Agent agent)
@@ -130,15 +114,13 @@ namespace HomeShark.Services.Models
                 if (agent == null) throw new ArgumentNullException(nameof(agent), $"{nameof(agent)} cannot be null");
 
                 agent.EntityActive = false;
-                agent = await UpdateAsync(agent);
+                return await UpdateAsync(agent);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error setting inactive {nameof(agent)}");
                 throw;
             }
-
-            return agent;
         }
     }
 }
