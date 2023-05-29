@@ -1,7 +1,7 @@
 using HomeShark.Core.Dtos.MappingProfiles;
 using HomeShark.Persistence;
 using HomeShark.Services;
-using HomeShark.Services.Models;
+using HomeShark.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
