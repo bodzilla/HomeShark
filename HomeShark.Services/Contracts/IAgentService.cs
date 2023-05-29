@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HomeShark.Core.Dtos.Requests;
-using HomeShark.Services.Contracts;
 
-namespace HomeShark.Services.Models
+namespace HomeShark.Services.Contracts
 {
     public interface IAgentService : IService<Agent>, IDisposable
     {

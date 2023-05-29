@@ -1,6 +1,6 @@
 using HomeShark.Core.Dtos.Requests;
 using HomeShark.Core.Models;
-using HomeShark.Services.Models;
+using HomeShark.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeShark.Api.Controllers

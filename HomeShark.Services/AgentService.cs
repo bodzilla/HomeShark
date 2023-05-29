@@ -6,10 +6,11 @@ using AutoMapper;
 using HomeShark.Core.Dtos.Requests;
 using HomeShark.Core.Models;
 using HomeShark.Persistence;
+using HomeShark.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace HomeShark.Services.Models
+namespace HomeShark.Services
 {
     public sealed class AgentService : IAgentService
     {
@@ -58,7 +59,7 @@ namespace HomeShark.Services.Models
         {
             try
             {
-                if (String.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name), $"{nameof(name)} cannot be null or empty");
+                if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name), $"{nameof(name)} cannot be null or empty");
 
                 return await _context.Agents
                     .Where(x => EF.Functions.Like(x.Name.ToLower(), $"%{name.ToLower()}%"))
